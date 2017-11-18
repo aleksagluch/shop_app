@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get 'cart/index'
+  get 'cart/destroy'
+  post 'cart/increase'
+  post 'cart/decrease'
+
 
   post 'cart/add'
 

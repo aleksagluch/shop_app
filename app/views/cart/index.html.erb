@@ -1,25 +1,50 @@
-<h1>Your Cart haha yolo</h1>
+<h1>Your Cart</h1>
 
 <% total = 0 %>
+
+<% if @cart.length == 0 %>
+    <h2>Your cart is empty</h2>
+
+<% else %>
+
 <table>
+
+  <thead>
+  <th> Product </th>
+  <th> Description </th>
+  <th> Quantity </th>
+  <th> Add </th>
+  <th> Remove </th>
+  <th> Price </th>
+  <th> Amount </th>
+  <th> Delete </th>
+  </thead>
+
   <% @cart.each do |id, quantity| %>
     <% product = Product.find(id) %>
       <tr>
         <td><%= image_tag product.image_url.to_s().split(", ")[0], :width => 100 %></td>
         <td> <%= product.name %> </td>
-        <td> <%= quantity %> </td>
-        <td> <%= number_to_currency product.price %> </td>
-        <td> <%= number_to_currency product.price * quantity %> </td>
+        <td> <%= quantity %></td>
+        <td> <%= button_to '+', :action => :increase, :id => product.id %> </td>
+        <td> <%= button_to '-', :action => :decrease, :id => product.id %> </td>
+        <td align="right"> <%= number_to_currency product.price %> </td>
+        <td align="right"> <%= number_to_currency product.price * quantity %> </td>
+        <td><%= link_to 'Destroy', :action => :destroy, data: { confirm: 'Are you sure?' }, :id => product.id %></td>
 
       </tr>
       <% total += quantity * product.price %>
   <%end%>
 
   <tr>
-    <td> Total: </td>
+    <td colspan="4"> Total: </td>
     <td> <%= number_to_currency total %> </td>
+  </tr>
+  <tr>
+    <td colspan="5" align="right"> <%= button_to 'Process order' %> </td>
   </tr>
 
 </table>
 
-<%= link_to 'Back', products_path %>
+<% end %>
+<%= link_to '< Keep buying', products_path %>
