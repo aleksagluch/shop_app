@@ -1,0 +1,25 @@
+<h1>Your Cart haha yolo</h1>
+
+<% total = 0 %>
+<table>
+  <% @cart.each do |id, quantity| %>
+    <% product = Product.find(id) %>
+      <tr>
+        <td><%= image_tag product.image_url.to_s().split(", ")[0], :width => 100 %></td>
+        <td> <%= product.name %> </td>
+        <td> <%= quantity %> </td>
+        <td> <%= number_to_currency product.price %> </td>
+        <td> <%= number_to_currency product.price * quantity %> </td>
+
+      </tr>
+      <% total += quantity * product.price %>
+  <%end%>
+
+  <tr>
+    <td> Total: </td>
+    <td> <%= number_to_currency total %> </td>
+  </tr>
+
+</table>
+
+<%= link_to 'Back', products_path %>

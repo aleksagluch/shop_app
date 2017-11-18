@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+
+<%= link_to 'My Cart', :controller => :cart, :action => :index %>
+
+<table>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag product.image_url.to_s().split(", ")[0] %></td>
+        <td><%= product.name %></td>
+        <!--  <td><%= product.gender %></td> -->
+        <!-- <td><%= product.price %></td>-->
+        <!-- <td><%= product.filters %></td> -->
+
+
+        <td><%= link_to 'Show', product %> | <%= link_to 'Edit', edit_product_path(product) %></td>
+        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product', new_product_path %>
