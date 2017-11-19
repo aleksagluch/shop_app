@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  get 'order/form'
+
   get 'cart/index'
   get 'cart/destroy'
   post 'cart/increase'
   post 'cart/decrease'
 
+  post 'order/form'
+  post 'order/new'
 
   post 'cart/add'
 
