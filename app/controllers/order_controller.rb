@@ -1,5 +1,7 @@
 class OrderController < ApplicationController
 
+
+
   @email
   @address
   @name
@@ -10,10 +12,14 @@ class OrderController < ApplicationController
   end
 
   def new
+
       @email = params[:email]
       @address = params[:address]
       @name = params[:name]
+
+
       session[:cart] = {}
+
   end
 
 

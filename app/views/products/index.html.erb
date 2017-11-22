@@ -1,22 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<!--
-<h1>Products</h1>
-<h2> <%= link_to 'My Cart', :controller => :cart, :action => :index %></h2> -->
+
+<!--<h1>Products</h1>-->
+<!--<h2> <%= link_to 'My Cart', :controller => :cart, :action => :index %></h2> -->
 
 
 <% @products.each do |product| %>
-  <div class="gallery">
-    <img> <%= image_tag product.image_url.to_s().split(", ")[0] %></img>
 
-    <div class ="desc">
+    <div class="gallery1">
+
+      <img class="image"> <%= image_tag product.image_url.to_s().split(", ")[0] %>
+
+      <div class ="desc1">
         <%= product.name %>
-        <p> <%= link_to 'Show', product %> | <%= link_to 'Edit', edit_product_path(product) %></p>
-        <p><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        <p class="text"><%= link_to 'Take a look!', product, :class=>'text' %> </p>
+      </div>
+
     </div>
-  </div>
+
 <% end %>
 
 <div class="clearfix"></div>
 
+
 <%= link_to 'New Product', new_product_path %>
+
+
+
+
