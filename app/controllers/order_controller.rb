@@ -17,10 +17,25 @@ class OrderController < ApplicationController
       @address = params[:address]
       @name = params[:name]
 
-
-      session[:cart] = {}
-
+      if validateInput(@email, @address, @name)
+        session[:cart] = {}
+      else
+        redirect_to order_form_url
+      end
   end
 
+  def validateInput(email, adress, name)
+
+      if name.nil?
+        return false
+      end
+      if email.nil?
+        return false
+      end
+      if adress.nil?
+        return false
+      end
+
+  end
 
 end
