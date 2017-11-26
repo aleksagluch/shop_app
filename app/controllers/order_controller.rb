@@ -9,6 +9,7 @@ class OrderController < ApplicationController
 
 
   def form
+    @message = params[:message] || ""
   end
 
   def new
@@ -20,22 +21,19 @@ class OrderController < ApplicationController
       if validateInput(@email, @address, @name)
         session[:cart] = {}
       else
-        redirect_to order_form_url
+        redirect_to action: 'form', message: 'Complete all fields in the form '
       end
   end
+
 
   def validateInput(email, adress, name)
 
-      if name.nil?
-        return false
-      end
-      if email.nil?
-        return false
-      end
-      if adress.nil?
-        return false
-      end
+    if name.length === 0 || email.length === 0 || adress.length === 0
+      return false
+
+    else
+      return true
+    end
 
   end
-
-end
+  end

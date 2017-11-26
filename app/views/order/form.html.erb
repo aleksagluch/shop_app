@@ -1,6 +1,7 @@
 <h1>Order shipping</h1>
-<p>You can make purchase here. You only need to enter the required information to place an order.</p>
+<p class="padding">You can make purchase here. You only need to enter the required information to place an order.</p>
 
+<div class="message"><%= @message %></div>
 
       <%= form_tag("/order/new", method: "post") do %>
 
@@ -26,7 +27,6 @@
 
 
       <% end %>
+<div class="back"> </div>
 
-
-
-<%= link_to 'Back to Cart', cart_index_path %>
+<%= link_to '< Back to Cart', cart_index_path, :class=>'keepbuy' %>
